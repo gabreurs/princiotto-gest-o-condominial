@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* Ricardo Princiotto — Sistema de design premium institucional. Todas as cores em HSL. */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @layer base {
   :root {
@@ -107,14 +107,15 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Manrope', system-ui, sans-serif;
-    font-feature-settings: "ss01", "cv11";
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11", "cv02";
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.022em;
+    font-variation-settings: "opsz" 96, "SOFT" 50;
   }
 
   ::selection {
@@ -129,22 +130,29 @@
   }
   .eyebrow {
     @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase tracking-[0.22em] text-accent;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-weight: 500;
+    letter-spacing: 0.18em;
   }
   .eyebrow::before {
     content: '';
     @apply h-px w-8 bg-accent;
   }
   .display {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    @apply text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-tight;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "SOFT" 50;
+    @apply text-4xl md:text-5xl lg:text-6xl leading-[1.04] tracking-[-0.022em];
   }
   .display-xl {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    @apply text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight;
+    font-family: 'Fraunces', Georgia, serif;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+    @apply text-5xl md:text-6xl lg:text-7xl leading-[1.0] tracking-[-0.028em];
   }
   .lede {
-    @apply text-base md:text-lg text-muted-foreground leading-relaxed;
+    @apply text-base md:text-lg text-muted-foreground leading-relaxed font-light;
+  }
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
   }
   .hairline {
     @apply h-px w-full bg-gradient-to-r from-transparent via-border to-transparent;

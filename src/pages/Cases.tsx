@@ -1,6 +1,9 @@
 import { Seo } from "@/components/site/Seo";
 import { PageHero } from "@/components/site/PageHero";
 import { CTASection } from "@/components/site/CTASection";
+import { Reveal } from "@/components/site/Reveal";
+import { Marquee } from "@/components/site/Marquee";
+import { motion } from "framer-motion";
 
 const Cases = () => (
   <>
@@ -16,9 +19,11 @@ const Cases = () => (
       breadcrumb={[{ label: "Início", to: "/" }, { label: "Cases" }]}
     />
 
+    <Marquee items={["Recuperação financeira", "Fundo de obras", "Inadimplência -68%", "Plano plurianual", "Manutenção preventiva", "Prestação de contas auditável"]} />
+
     <section className="container-prose py-20 md:py-28">
       <article className="grid lg:grid-cols-12 gap-12">
-        <header className="lg:col-span-5">
+        <Reveal className="lg:col-span-5">
           <p className="eyebrow mb-6">Case em destaque</p>
           <h2 className="display text-primary text-balance">
             Recuperação financeira de um condomínio em desequilíbrio.
@@ -29,7 +34,7 @@ const Cases = () => (
             manutenção apenas reativa. A reversão desse cenário foi possível com método,
             disciplina e presença.
           </p>
-        </header>
+        </Reveal>
 
         <div className="lg:col-span-7 space-y-12">
           {[
@@ -53,14 +58,16 @@ const Cases = () => (
               title: "Equilíbrio, reserva e estabilidade",
               text: "Em até doze meses, o condomínio voltou a operar com previsibilidade orçamentária, fortaleceu seu fundo de obras, reduziu drasticamente a inadimplência e passou a executar manutenção preventiva regular. Mais do que números — recuperou a confiança dos moradores na gestão.",
             },
-          ].map((b) => (
-            <div key={b.eyebrow} className="border-l-2 border-accent pl-6">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
-                {b.eyebrow}
-              </p>
-              <h3 className="font-serif text-2xl text-primary mb-3 leading-snug">{b.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{b.text}</p>
-            </div>
+          ].map((b, i) => (
+            <Reveal key={b.eyebrow} delay={i * 0.08}>
+              <div className="border-l-2 border-accent pl-6">
+                <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
+                  {b.eyebrow}
+                </p>
+                <h3 className="font-serif text-2xl text-primary mb-3 leading-snug">{b.title}</h3>
+                <p className="text-muted-foreground leading-relaxed">{b.text}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </article>
@@ -73,12 +80,14 @@ const Cases = () => (
           ["+3,2x", "Crescimento do fundo de obras"],
           ["12 meses", "Estabilização financeira"],
           ["100%", "Prestação de contas auditável"],
-        ].map(([k, v]) => (
-          <div key={k} className="bg-background p-10 text-center">
-            <p className="font-serif text-4xl md:text-5xl text-primary">{k}</p>
-            <div className="gold-rule mx-auto my-4" />
-            <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{v}</p>
-          </div>
+        ].map(([k, v], i) => (
+          <Reveal key={k} delay={i * 0.08}>
+            <motion.div whileHover={{ y: -3 }} className="bg-background p-10 text-center h-full">
+              <p className="font-serif text-4xl md:text-5xl text-primary">{k}</p>
+              <div className="gold-rule mx-auto my-4" />
+              <p className="mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{v}</p>
+            </motion.div>
+          </Reveal>
         ))}
       </div>
       <p className="mt-6 text-[11px] text-muted-foreground italic text-center">

@@ -120,42 +120,42 @@ const Index = () => {
                 <img
                   src={portrait}
                   alt="Ricardo Princiotto — síndico profissional"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-top"
                   width={896}
                   height={1216}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-1">
+                  <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-1">
                     Síndico Profissional
                   </p>
                   <p className="font-serif text-xl">Ricardo Princiotto</p>
                 </div>
-              </div>
-              <div className="absolute -top-8 -right-8 hidden md:block">
-                <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={140} />
+                <div className="absolute top-4 right-4">
+                  <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={108} />
+                </div>
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* Marquee credenciais sob o hero */}
-        <div className="relative border-t border-primary-foreground/10 py-5">
-          <Marquee
-            items={[
-              "Síndico 5 Estrelas",
-              "Certificação Vanzolini · USP",
-              "20+ anos de experiência",
-              "RC R$ 1.000.000,00",
-              "Sem honorários extras",
-              "Presença real no condomínio",
-              "Transparência integral",
-            ].map((t) => (
-              <span className="font-serif text-xl md:text-2xl text-primary-foreground/70">{t}</span>
-            ))}
-          />
-        </div>
       </section>
+
+      {/* Marquee tech discreto entre HERO e CREDIBILIDADE */}
+      <div className="bg-navy-deep border-y border-primary-foreground/10">
+        <Marquee
+          tone="dark"
+          items={[
+            "Síndico 5 Estrelas",
+            "Certificação Vanzolini · USP",
+            "20+ anos de experiência",
+            "RC R$ 1.000.000,00",
+            "Sem honorários extras",
+            "Presença real no condomínio",
+            "Transparência integral",
+          ]}
+        />
+      </div>
 
       {/* CREDIBILIDADE */}
       <section className="border-y border-border bg-muted/40">
@@ -165,13 +165,15 @@ const Index = () => {
             ["5★", "Síndico Certificado"],
             ["R$ 1MM", "Seguro RC profissional"],
             ["100%", "Transparência em prestação de contas"],
-          ].map(([k, v]) => (
-            <div key={k}>
-              <p className="font-serif text-3xl md:text-4xl text-primary">{k}</p>
-              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">
-                {v}
-              </p>
-            </div>
+          ].map(([k, v], i) => (
+            <Reveal key={k} delay={i * 0.08}>
+              <div>
+                <p className="font-serif text-3xl md:text-4xl text-primary">{k}</p>
+                <p className="mono text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">
+                  {v}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -217,22 +219,21 @@ const Index = () => {
       </section>
 
       {/* SERVIÇOS */}
+      <div className="bg-navy-deep border-y border-primary-foreground/10">
+        <Marquee
+          tone="dark"
+          reverse
+          items={[
+            "Gestão Executiva",
+            "Consultoria Condominial",
+            "Segurança Patrimonial",
+            "Apoio Jurídico",
+            "Modernização & Valorização",
+            "Prestação de Contas Auditável",
+          ]}
+        />
+      </div>
       <section className="bg-primary text-primary-foreground">
-        <div className="border-y border-primary-foreground/10 py-5 bg-navy-deep">
-          <Marquee
-            reverse
-            items={[
-              "Gestão Executiva",
-              "Consultoria Condominial",
-              "Segurança Patrimonial",
-              "Apoio Jurídico",
-              "Modernização & Valorização",
-              "Prestação de Contas Auditável",
-            ].map((t) => (
-              <span className="font-serif italic text-2xl md:text-3xl text-accent/80">{t}</span>
-            ))}
-          />
-        </div>
         <div className="container-prose py-24 md:py-32">
           <Reveal className="grid lg:grid-cols-12 gap-12 mb-16">
             <div className="lg:col-span-6">
@@ -278,7 +279,7 @@ const Index = () => {
       {/* CASE DESTAQUE */}
       <section className="container-prose py-24 md:py-32">
         <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5">
+          <Reveal className="lg:col-span-5">
             <p className="eyebrow mb-6">Case de destaque</p>
             <h2 className="display text-primary text-balance mb-6">
               Recuperação financeira completa de um condomínio em crise.
@@ -294,37 +295,39 @@ const Index = () => {
             >
               Ver o case completo <ArrowUpRight size={14} />
             </Link>
-          </div>
-          <div className="lg:col-span-6 lg:col-start-7 grid grid-cols-2 gap-px bg-border">
+          </Reveal>
+          <Reveal delay={0.12} className="lg:col-span-6 lg:col-start-7">
+          <div className="grid grid-cols-2 gap-px bg-border">
             {[
               ["−68%", "Redução de inadimplência"],
               ["+3,2x", "Crescimento do fundo de obras"],
               ["12 meses", "Para estabilização financeira"],
               ["100%", "Prestação de contas auditável"],
             ].map(([k, v]) => (
-              <div key={k} className="bg-background p-8">
+              <motion.div key={k} whileHover={{ y: -3 }} className="bg-background p-8">
                 <p className="font-serif text-3xl text-primary">{k}</p>
-                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">
+                <p className="mono text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">
                   {v}
                 </p>
-              </div>
+              </motion.div>
             ))}
             <p className="col-span-2 bg-muted/40 p-4 text-[11px] text-muted-foreground italic">
               * Indicadores ilustrativos representando ordem de grandeza típica de cases reais conduzidos.
             </p>
           </div>
+          </Reveal>
         </div>
       </section>
 
       {/* REGIÕES */}
       <section className="bg-muted/40 border-y border-border">
         <div className="container-prose py-24 md:py-32">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <Reveal className="text-center max-w-2xl mx-auto mb-16">
             <p className="eyebrow justify-center mb-6">Regiões de atuação</p>
             <h2 className="display text-primary text-balance">
               Atendimento direcionado e estratégico.
             </h2>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-px bg-border">
             {[
@@ -333,22 +336,25 @@ const Index = () => {
               ["Alphaville", "/sindico-profissional-alphaville"],
               ["Santana de Parnaíba", "/sindico-profissional-santana-de-parnaiba"],
               ["São Paulo", "/sindico-profissional-sao-paulo"],
-            ].map(([name, to]) => (
-              <Link
-                key={to}
-                to={to}
-                className="bg-background p-8 group hover:bg-primary hover:text-primary-foreground transition-colors"
-              >
-                <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
-                  Síndico Profissional
-                </p>
-                <p className="font-serif text-2xl group-hover:text-accent transition-colors">
-                  {name}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-1 text-xs">
-                  Ver página <ArrowUpRight size={12} />
-                </span>
-              </Link>
+            ].map(([name, to], i) => (
+              <Reveal key={to} delay={i * 0.06}>
+                <motion.div whileHover={{ y: -3 }} className="h-full">
+                  <Link
+                    to={to}
+                    className="bg-background p-8 group hover:bg-primary hover:text-primary-foreground transition-colors h-full block"
+                  >
+                    <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-3">
+                      Síndico Profissional
+                    </p>
+                    <p className="font-serif text-2xl group-hover:text-accent transition-colors">
+                      {name}
+                    </p>
+                    <span className="mt-6 inline-flex items-center gap-1 text-xs">
+                      Ver página <ArrowUpRight size={12} />
+                    </span>
+                  </Link>
+                </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -357,13 +363,13 @@ const Index = () => {
       {/* FAQ */}
       <section className="container-prose py-24 md:py-32">
         <div className="grid lg:grid-cols-12 gap-12">
-          <div className="lg:col-span-4">
+          <Reveal className="lg:col-span-4">
             <p className="eyebrow mb-6">Perguntas frequentes</p>
             <h2 className="display text-primary text-balance">
               Esclarecimentos antes da contratação.
             </h2>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6">
+          </Reveal>
+          <Reveal delay={0.1} className="lg:col-span-7 lg:col-start-6">
             <Accordion type="single" collapsible className="w-full">
               {faqs.slice(0, 6).map((f, i) => (
                 <AccordionItem key={i} value={`item-${i}`} className="border-border">
@@ -376,7 +382,7 @@ const Index = () => {
                 </AccordionItem>
               ))}
             </Accordion>
-          </div>
+          </Reveal>
         </div>
       </section>
 

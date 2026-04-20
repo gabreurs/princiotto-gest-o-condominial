@@ -48,6 +48,7 @@ export const CTASection = ({
     </div>
     <div className="border-t border-primary-foreground/10 py-6">
       <Marquee
+        tone="dark"
         items={[
           "Síndico 5 Estrelas",
           "Certificação Vanzolini · USP",
@@ -55,9 +56,7 @@ export const CTASection = ({
           "RC R$ 1.000.000,00",
           "Sem honorários extras em assembleias",
           "Presença real no condomínio",
-        ].map((t) => (
-          <span className="font-serif text-2xl md:text-3xl text-primary-foreground/80">{t}</span>
-        ))}
+        ]}
       />
     </div>
   </section>

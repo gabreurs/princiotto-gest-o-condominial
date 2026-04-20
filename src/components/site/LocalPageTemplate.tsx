@@ -1,6 +1,9 @@
 import { Seo } from "./Seo";
 import { PageHero } from "./PageHero";
 import { CTASection } from "./CTASection";
+import { Reveal } from "./Reveal";
+import { Marquee } from "./Marquee";
+import { motion } from "framer-motion";
 import { waLink, SITE } from "@/lib/site";
 import { differentials } from "@/data/services";
 import { Check, ArrowUpRight } from "lucide-react";
@@ -64,15 +67,18 @@ export const LocalPageTemplate = ({ data }: { data: LocalPageData }) => {
         ]}
       />
 
+      <Marquee items={[`Síndico Profissional · ${data.city}`, "Vanzolini · USP", "20+ anos", "RC R$ 1.000.000", "Sem honorários extras", "Presença real"]} />
+
       <section className="container-prose py-20 md:py-24 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-7 space-y-6">
+        <Reveal className="lg:col-span-7 space-y-6">
           <p className="eyebrow">Contexto local</p>
           <h2 className="display text-primary text-balance">{data.intro.title}</h2>
           {data.intro.paragraphs.map((p, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
           ))}
-        </div>
-        <aside className="lg:col-span-4 lg:col-start-9 bg-primary text-primary-foreground p-8 self-start">
+        </Reveal>
+        <Reveal delay={0.12} className="lg:col-span-4 lg:col-start-9 self-start">
+          <motion.aside whileHover={{ y: -3 }} className="bg-primary text-primary-foreground p-8">
           <p className="eyebrow !text-accent mb-4">Atendimento</p>
           <p className="font-serif text-2xl mb-4">Síndico Profissional em {data.city}</p>
           <p className="text-sm text-primary-foreground/70 mb-6 leading-relaxed">
@@ -86,12 +92,13 @@ export const LocalPageTemplate = ({ data }: { data: LocalPageData }) => {
           >
             Solicitar proposta <ArrowUpRight size={14} />
           </a>
-        </aside>
+          </motion.aside>
+        </Reveal>
       </section>
 
       <section className="bg-muted/40 border-y border-border">
         <div className="container-prose py-20 md:py-24 grid lg:grid-cols-2 gap-12">
-          <div>
+          <Reveal>
             <p className="eyebrow mb-6">Por que síndico profissional</p>
             <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight mb-6">
               {data.whyLocal.title}
@@ -99,8 +106,8 @@ export const LocalPageTemplate = ({ data }: { data: LocalPageData }) => {
             {data.whyLocal.paragraphs.map((p, i) => (
               <p key={i} className="text-muted-foreground leading-relaxed mb-4">{p}</p>
             ))}
-          </div>
-          <div>
+          </Reveal>
+          <Reveal delay={0.12}>
             <p className="eyebrow mb-6">Desafios típicos</p>
             <h2 className="font-serif text-3xl md:text-4xl text-primary leading-tight mb-6">
               {data.challenges.title}
@@ -113,35 +120,39 @@ export const LocalPageTemplate = ({ data }: { data: LocalPageData }) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       <section className="container-prose py-20 md:py-24 grid lg:grid-cols-12 gap-12">
-        <div className="lg:col-span-5">
+        <Reveal className="lg:col-span-5">
           <p className="eyebrow mb-6">Como atuo em {data.city}</p>
           <h2 className="display text-primary text-balance">{data.howICanHelp.title}</h2>
-        </div>
-        <div className="lg:col-span-6 lg:col-start-7 space-y-5">
+        </Reveal>
+        <Reveal delay={0.12} className="lg:col-span-6 lg:col-start-7 space-y-5">
           {data.howICanHelp.paragraphs.map((p, i) => (
             <p key={i} className="text-muted-foreground leading-relaxed">{p}</p>
           ))}
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-muted/40 border-y border-border">
         <div className="container-prose py-20 md:py-24">
-          <p className="eyebrow mb-6">Diferenciais</p>
-          <h2 className="display text-primary text-balance mb-12 max-w-2xl">
-            O padrão que entrego em {data.city}.
-          </h2>
+          <Reveal>
+            <p className="eyebrow mb-6">Diferenciais</p>
+            <h2 className="display text-primary text-balance mb-12 max-w-2xl">
+              O padrão que entrego em {data.city}.
+            </h2>
+          </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-            {differentials.slice(0, 4).map((d) => (
-              <div key={d.title} className="bg-background p-8">
-                <div className="gold-rule mb-4" />
-                <h3 className="font-serif text-lg text-primary mb-3">{d.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
-              </div>
+            {differentials.slice(0, 4).map((d, i) => (
+              <Reveal key={d.title} delay={i * 0.08}>
+                <motion.div whileHover={{ y: -3 }} className="bg-background p-8 h-full">
+                  <div className="gold-rule mb-4" />
+                  <h3 className="font-serif text-lg text-primary mb-3">{d.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
+                </motion.div>
+              </Reveal>
             ))}
           </div>
         </div>
