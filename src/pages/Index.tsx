@@ -39,106 +39,119 @@ const Index = () => {
         jsonLd={jsonLd}
       />
 
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-navy-deep text-primary-foreground -mt-20 pt-20">
-        <div className="absolute inset-0">
-          <img
-            src={heroBg}
-            alt=""
-            className="h-full w-full object-cover opacity-30"
-            width={1920}
-            height={1280}
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-navy-deep via-navy-deep/85 to-navy-deep/30" />
-        </div>
+      {/* HERO — claro, contemporâneo */}
+      <section className="relative overflow-hidden bg-background pt-28 md:pt-32">
+        {/* textura sutil de grade */}
+        <div className="absolute inset-0 grid-bg opacity-[0.35] [mask-image:radial-gradient(ellipse_at_top,black_20%,transparent_70%)]" aria-hidden />
+        <div className="absolute inset-x-0 top-0 h-[420px] bg-gradient-soft" aria-hidden />
 
-        <div className="container-prose relative grid lg:grid-cols-12 gap-16 py-24 md:py-32 lg:py-40 items-center">
+        <div className="container-prose relative grid lg:grid-cols-12 gap-12 lg:gap-16 pb-20 md:pb-28 lg:pb-32 items-center">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
-            <motion.p
-              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
-              className="eyebrow !text-accent mb-8">Síndico Profissional · 20+ anos</motion.p>
-            <h1 className="display-xl text-balance mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur pl-1.5 pr-3 py-1 mb-8"
+            >
+              <span className="grid h-5 w-5 place-items-center rounded-full bg-accent/15 text-accent text-[10px]">★</span>
+              <span className="mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">
+                Síndico 5 Estrelas · 20+ anos
+              </span>
+            </motion.div>
+
+            <h1 className="display-xl text-balance mb-7">
               Gestão condominial com{" "}
-              <span className="font-serif italic text-accent">autoridade,</span>{" "}
+              <span className="serif-italic text-primary/90">autoridade</span>,
               presença e transparência.
             </h1>
+
             <motion.p
-              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.35 }}
-              className="lede !text-primary-foreground/75 max-w-xl mb-10">
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.3 }}
+              className="lede max-w-xl mb-10"
+            >
               Sindicatura profissional para condomínios em Osasco, Barueri, Alphaville,
               Santana de Parnaíba e São Paulo. Mais de duas décadas conduzindo condomínios
               com método, técnica e presença real.
             </motion.p>
+
             <motion.div
-              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
-              className="flex flex-wrap gap-4 mb-12">
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.45 }}
+              className="flex flex-wrap gap-3 mb-12"
+            >
               <motion.a
-                whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}
+                whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}
                 href={waLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-accent text-accent-foreground px-7 py-4 text-sm tracking-wide hover:bg-gold-soft transition-colors"
+                className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground pl-6 pr-2 py-2 text-[14px] hover:bg-navy-deep transition-colors"
               >
                 Falar pelo WhatsApp
-                <ArrowUpRight size={16} />
+                <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:translate-x-0.5">
+                  <ArrowUpRight size={15} />
+                </span>
               </motion.a>
               <Link
                 to="/contato"
-                className="inline-flex items-center border border-primary-foreground/30 px-7 py-4 text-sm tracking-wide hover:border-accent hover:text-accent transition-colors"
+                className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-[14px] text-primary hover:border-primary/40 transition-colors"
               >
-                Solicitar avaliação do condomínio
+                Solicitar avaliação
               </Link>
             </motion.div>
 
-            <div className="flex flex-wrap gap-x-10 gap-y-4 text-sm text-primary-foreground/70">
+            <div className="flex flex-wrap gap-x-8 gap-y-3 text-[13px] text-muted-foreground border-t border-border pt-6">
               <span className="flex items-center gap-2">
-                <Award size={16} className="text-accent" /> Síndico 5 Estrelas
+                <Award size={14} className="text-accent" /> Síndico 5 Estrelas
               </span>
               <span className="flex items-center gap-2">
-                <ShieldCheck size={16} className="text-accent" /> RC R$ 1.000.000,00
+                <ShieldCheck size={14} className="text-accent" /> RC R$ 1.000.000
               </span>
               <span className="flex items-center gap-2">
-                <Sparkles size={16} className="text-accent" /> Vanzolini / USP
+                <Sparkles size={14} className="text-accent" /> Vanzolini / USP
               </span>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
             className="lg:col-span-5"
           >
             <div className="relative">
-              <div className="absolute -inset-3 border border-accent/40" aria-hidden />
-              <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
+              {/* moldura sutil */}
+              <div className="absolute -inset-2 rounded-[10px] bg-gradient-to-br from-accent/20 via-transparent to-primary/10 -z-10" aria-hidden />
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[6px] bg-muted shadow-elegant">
                 <img
                   src={portrait}
                   alt="Ricardo Princiotto — síndico profissional"
-                  className="h-full w-full object-cover object-top"
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: "50% 12%" }}
                   width={896}
                   height={1216}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/15 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-1">
-                    Síndico Profissional
-                  </p>
-                  <p className="font-serif text-xl">Ricardo Princiotto</p>
+                {/* etiqueta inferior */}
+                <div className="absolute left-4 bottom-4 right-4 flex items-end justify-between">
+                  <div className="rounded-md bg-background/85 backdrop-blur px-3 py-2">
+                    <p className="mono text-[9.5px] uppercase tracking-[0.18em] text-muted-foreground">
+                      Síndico Profissional
+                    </p>
+                    <p className="text-[14px] text-primary font-medium leading-tight">Ricardo Princiotto</p>
+                  </div>
                 </div>
-                <div className="absolute top-4 right-4">
-                  <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={108} />
+                {/* badge giratório elegante */}
+                <div className="absolute -right-5 -bottom-5">
+                  <SpinningBadge
+                    text="SÍNDICO 5 ESTRELAS · VANZOLINI USP · "
+                    size={108}
+                  />
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
-
       </section>
 
       {/* Marquee tech discreto entre HERO e CREDIBILIDADE */}
