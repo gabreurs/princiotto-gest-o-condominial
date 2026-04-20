@@ -30,7 +30,6 @@ const Sobre = () => (
     <section className="container-prose py-20 md:py-28 grid lg:grid-cols-12 gap-16">
       <div className="lg:col-span-5">
         <div className="relative sticky top-28">
-          <div className="absolute -inset-3 border border-accent/40" aria-hidden />
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
