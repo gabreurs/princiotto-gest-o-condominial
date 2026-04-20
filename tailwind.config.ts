@@ -69,9 +69,9 @@ export default {
         },
       },
       fontFamily: {
-        serif: ['Fraunces', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+        sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",
