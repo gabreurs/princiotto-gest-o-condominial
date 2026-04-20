@@ -43,13 +43,13 @@ export const Header = () => {
         aria-hidden
         animate={{
           backgroundColor: scrolled ? "hsl(0 0% 100% / 0.78)" : "hsl(0 0% 100% / 0)",
-          backdropFilter: scrolled ? "saturate(180%) blur(14px)" : "saturate(100%) blur(0px)",
-          WebkitBackdropFilter: scrolled ? "saturate(180%) blur(14px)" : "saturate(100%) blur(0px)",
+          backdropFilter: scrolled ? "saturate(180%) blur(14px)" : "blur(0px)",
           boxShadow: scrolled
-            ? "0 1px 0 0 hsl(var(--border) / 0.6), 0 8px 24px -12px hsl(220 25% 14% / 0.08)"
-            : "0 1px 0 0 hsl(var(--border) / 0), 0 0 0 0 hsl(220 25% 14% / 0)",
+            ? "0 1px 0 0 hsl(220 16% 91% / 0.7), 0 8px 24px -12px hsl(220 25% 14% / 0.08)"
+            : "0 0 0 0 hsl(220 25% 14% / 0)",
         }}
         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+        style={{ WebkitBackdropFilter: scrolled ? "saturate(180%) blur(14px)" : "blur(0px)" }}
         className="absolute inset-0 -z-10"
       />
 
