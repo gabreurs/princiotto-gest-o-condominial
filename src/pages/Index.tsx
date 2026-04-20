@@ -6,6 +6,8 @@ import { CTASection } from "@/components/site/CTASection";
 import { Marquee } from "@/components/site/Marquee";
 import { SpinningBadge } from "@/components/site/SpinningBadge";
 import { Reveal } from "@/components/site/Reveal";
+import { Magnetic, SpotlightCard } from "@/components/site/Magnetic";
+import { Testimonials } from "@/components/site/Testimonials";
 import { SITE, waLink } from "@/lib/site";
 import { services, differentials, faqs } from "@/data/services";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -81,24 +83,28 @@ const Index = () => {
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.45 }}
               className="flex flex-wrap gap-3 mb-12"
             >
-              <motion.a
-                whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}
-                href={waLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground pl-6 pr-2 py-2 text-[14px] hover:bg-navy-deep transition-colors"
-              >
-                Falar pelo WhatsApp
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:translate-x-0.5">
-                  <ArrowUpRight size={15} />
-                </span>
-              </motion.a>
-              <Link
-                to="/contato"
-                className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-[14px] text-primary hover:border-primary/40 transition-colors"
-              >
-                Solicitar avaliação
-              </Link>
+              <Magnetic strength={10}>
+                <motion.a
+                  whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground pl-6 pr-2 py-2 text-[14px] hover:bg-navy-deep transition-colors"
+                >
+                  Falar pelo WhatsApp
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:translate-x-0.5">
+                    <ArrowUpRight size={15} />
+                  </span>
+                </motion.a>
+              </Magnetic>
+              <Magnetic strength={6}>
+                <Link
+                  to="/contato"
+                  className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-[14px] text-primary hover:border-primary/40 transition-colors"
+                >
+                  Solicitar avaliação
+                </Link>
+              </Magnetic>
             </motion.div>
 
             <div className="flex flex-wrap gap-x-8 gap-y-3 text-[13px] text-muted-foreground border-t border-border pt-6">
