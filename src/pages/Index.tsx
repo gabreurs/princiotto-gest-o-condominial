@@ -218,11 +218,13 @@ const Index = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
           {differentials.slice(0, 4).map((d, i) => (
             <Reveal key={d.title} delay={i * 0.08}>
-              <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/50 transition-colors h-full">
-                <div className="gold-rule mb-6" />
-                <h3 className="font-serif text-xl text-primary mb-3 leading-snug">{d.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
-              </motion.div>
+              <SpotlightCard className="h-full">
+                <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/40 transition-colors h-full">
+                  <div className="gold-rule mb-6" />
+                  <h3 className="text-[17px] font-medium text-primary mb-3 leading-snug tracking-[-0.01em]">{d.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
+                </motion.div>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>
@@ -272,13 +274,15 @@ const Index = () => {
               const Icon = s.icon;
               return (
                 <Reveal key={s.slug} delay={(i % 4) * 0.06}>
-                  <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
-                    <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
-                    <h3 className="font-serif text-lg mb-3 leading-snug">{s.title}</h3>
-                    <p className="text-sm text-primary-foreground/65 leading-relaxed">
-                      {s.short}
-                    </p>
-                  </motion.div>
+                  <SpotlightCard className="h-full">
+                    <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
+                      <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
+                      <h3 className="text-[16px] font-medium mb-3 leading-snug tracking-[-0.01em]">{s.title}</h3>
+                      <p className="text-sm text-primary-foreground/70 leading-relaxed">
+                        {s.short}
+                      </p>
+                    </motion.div>
+                  </SpotlightCard>
                 </Reveal>
               );
             })}
