@@ -10,7 +10,7 @@ export const Footer = () => {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="relative h-12 w-12 overflow-hidden rounded-full ring-1 ring-accent/50">
+              <span className="relative h-12 w-12 overflow-hidden ring-1 ring-accent/50">
                 <img src={logoRP} alt="Brasão Ricardo Princiotto" className="h-full w-full object-cover" />
               </span>
               <div>
