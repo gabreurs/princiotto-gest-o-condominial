@@ -6,6 +6,8 @@ import { CTASection } from "@/components/site/CTASection";
 import { Marquee } from "@/components/site/Marquee";
 import { SpinningBadge } from "@/components/site/SpinningBadge";
 import { Reveal } from "@/components/site/Reveal";
+import { Magnetic, SpotlightCard } from "@/components/site/Magnetic";
+import { Testimonials } from "@/components/site/Testimonials";
 import { SITE, waLink } from "@/lib/site";
 import { services, differentials, faqs } from "@/data/services";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -81,24 +83,28 @@ const Index = () => {
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.45 }}
               className="flex flex-wrap gap-3 mb-12"
             >
-              <motion.a
-                whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}
-                href={waLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground pl-6 pr-2 py-2 text-[14px] hover:bg-navy-deep transition-colors"
-              >
-                Falar pelo WhatsApp
-                <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:translate-x-0.5">
-                  <ArrowUpRight size={15} />
-                </span>
-              </motion.a>
-              <Link
-                to="/contato"
-                className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-[14px] text-primary hover:border-primary/40 transition-colors"
-              >
-                Solicitar avaliação
-              </Link>
+              <Magnetic strength={10}>
+                <motion.a
+                  whileHover={{ y: -1 }} whileTap={{ scale: 0.98 }}
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground pl-6 pr-2 py-2 text-[14px] hover:bg-navy-deep transition-colors"
+                >
+                  Falar pelo WhatsApp
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-accent text-accent-foreground transition-transform group-hover:translate-x-0.5">
+                    <ArrowUpRight size={15} />
+                  </span>
+                </motion.a>
+              </Magnetic>
+              <Magnetic strength={6}>
+                <Link
+                  to="/contato"
+                  className="inline-flex items-center rounded-full border border-border px-5 py-2.5 text-[14px] text-primary hover:border-primary/40 transition-colors"
+                >
+                  Solicitar avaliação
+                </Link>
+              </Magnetic>
             </motion.div>
 
             <div className="flex flex-wrap gap-x-8 gap-y-3 text-[13px] text-muted-foreground border-t border-border pt-6">
@@ -212,11 +218,13 @@ const Index = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
           {differentials.slice(0, 4).map((d, i) => (
             <Reveal key={d.title} delay={i * 0.08}>
-              <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/50 transition-colors h-full">
-                <div className="gold-rule mb-6" />
-                <h3 className="font-serif text-xl text-primary mb-3 leading-snug">{d.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
-              </motion.div>
+              <SpotlightCard className="h-full">
+                <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/40 transition-colors h-full">
+                  <div className="gold-rule mb-6" />
+                  <h3 className="text-[17px] font-medium text-primary mb-3 leading-snug tracking-[-0.01em]">{d.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
+                </motion.div>
+              </SpotlightCard>
             </Reveal>
           ))}
         </div>
@@ -266,13 +274,15 @@ const Index = () => {
               const Icon = s.icon;
               return (
                 <Reveal key={s.slug} delay={(i % 4) * 0.06}>
-                  <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
-                    <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
-                    <h3 className="font-serif text-lg mb-3 leading-snug">{s.title}</h3>
-                    <p className="text-sm text-primary-foreground/65 leading-relaxed">
-                      {s.short}
-                    </p>
-                  </motion.div>
+                  <SpotlightCard className="h-full">
+                    <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
+                      <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
+                      <h3 className="text-[16px] font-medium mb-3 leading-snug tracking-[-0.01em]">{s.title}</h3>
+                      <p className="text-sm text-primary-foreground/70 leading-relaxed">
+                        {s.short}
+                      </p>
+                    </motion.div>
+                  </SpotlightCard>
                 </Reveal>
               );
             })}
@@ -398,6 +408,8 @@ const Index = () => {
           </Reveal>
         </div>
       </section>
+
+      <Testimonials />
 
       <CTASection />
     </>

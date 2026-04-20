@@ -89,7 +89,7 @@ export const Header = () => {
                   {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 -z-10 rounded-md bg-muted"
+                      className="absolute inset-0 -z-10 rounded-md bg-accent/10 ring-1 ring-accent/30"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
