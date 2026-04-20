@@ -5,7 +5,7 @@ import logoRP from "@/assets/logo-rp.jpeg";
 
 export const Footer = () => {
   return (
-    <footer className="bg-navy-deep text-primary-foreground">
+    <footer className="bg-primary text-primary-foreground">
       <div className="container-prose py-20">
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5 space-y-6">

@@ -32,20 +32,27 @@ const Sobre = () => (
         <div className="relative sticky top-28">
           <div className="absolute -inset-3 border border-accent/40" aria-hidden />
           <motion.div
-            initial={{ opacity: 0, scale: 1.04 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-[4/5] overflow-hidden bg-graphite"
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="relative aspect-[4/5] overflow-hidden rounded-[6px] bg-muted shadow-elegant"
           >
-            <img src={portrait} alt="Retrato profissional de Ricardo Princiotto" className="h-full w-full object-cover object-top" loading="lazy" width={896} height={1216} />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-primary-foreground">
-              <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-1">Síndico Profissional</p>
-              <p className="font-serif text-xl">Ricardo Princiotto</p>
+            <img
+              src={portrait}
+              alt="Retrato profissional de Ricardo Princiotto"
+              className="h-full w-full object-cover"
+              style={{ objectPosition: "50% 12%" }}
+              loading="lazy"
+              width={896}
+              height={1216}
+            />
+            <div className="absolute left-4 bottom-4 rounded-md bg-background/85 backdrop-blur px-3 py-2">
+              <p className="mono text-[9.5px] uppercase tracking-[0.18em] text-muted-foreground">Síndico Profissional</p>
+              <p className="text-[14px] text-primary font-medium leading-tight">Ricardo Princiotto</p>
             </div>
-            <div className="absolute top-4 right-4">
-              <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={104} />
+            <div className="absolute -right-5 -bottom-5">
+              <SpinningBadge text="SÍNDICO 5 ESTRELAS · VANZOLINI USP · " size={104} />
             </div>
           </motion.div>
         </div>
