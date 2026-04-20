@@ -142,6 +142,7 @@ const Index = () => {
         {/* Marquee credenciais sob o hero */}
         <div className="relative border-t border-primary-foreground/10 py-5">
           <Marquee
+            tone="dark"
             items={[
               "Síndico 5 Estrelas",
               "Certificação Vanzolini · USP",
@@ -150,9 +151,7 @@ const Index = () => {
               "Sem honorários extras",
               "Presença real no condomínio",
               "Transparência integral",
-            ].map((t) => (
-              <span className="font-serif text-xl md:text-2xl text-primary-foreground/70">{t}</span>
-            ))}
+            ]}
           />
         </div>
       </section>
@@ -220,6 +219,7 @@ const Index = () => {
       <section className="bg-primary text-primary-foreground">
         <div className="border-y border-primary-foreground/10 py-5 bg-navy-deep">
           <Marquee
+            tone="dark"
             reverse
             items={[
               "Gestão Executiva",
@@ -228,9 +228,7 @@ const Index = () => {
               "Apoio Jurídico",
               "Modernização & Valorização",
               "Prestação de Contas Auditável",
-            ].map((t) => (
-              <span className="font-serif italic text-2xl md:text-3xl text-accent/80">{t}</span>
-            ))}
+            ]}
           />
         </div>
         <div className="container-prose py-24 md:py-32">
