@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { SITE, waLink } from "@/lib/site";
+import logoRP from "@/assets/logo-rp.jpeg";
 
 export const Footer = () => {
   return (
@@ -9,8 +10,8 @@ export const Footer = () => {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 place-items-center bg-accent text-accent-foreground font-serif text-lg">
-                RP
+              <span className="relative h-12 w-12 overflow-hidden rounded-full ring-1 ring-accent/50">
+                <img src={logoRP} alt="Brasão Ricardo Princiotto" className="h-full w-full object-cover" />
               </span>
               <div>
                 <p className="font-serif text-xl">{SITE.name}</p>

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { ArrowUpRight, Award, ShieldCheck, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 import { Seo } from "@/components/site/Seo";
 import { CTASection } from "@/components/site/CTASection";
+import { Marquee } from "@/components/site/Marquee";
+import { SpinningBadge } from "@/components/site/SpinningBadge";
+import { Reveal } from "@/components/site/Reveal";
 import { SITE, waLink } from "@/lib/site";
 import { services, differentials, faqs } from "@/data/services";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -49,20 +53,32 @@ const Index = () => {
         </div>
 
         <div className="container-prose relative grid lg:grid-cols-12 gap-16 py-24 md:py-32 lg:py-40 items-center">
-          <div className="lg:col-span-7 animate-fade-up">
-            <p className="eyebrow !text-accent mb-8">Síndico Profissional · 20+ anos</p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7"
+          >
+            <motion.p
+              initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+              className="eyebrow !text-accent mb-8">Síndico Profissional · 20+ anos</motion.p>
             <h1 className="display-xl text-balance mb-8">
               Gestão condominial com{" "}
               <span className="font-serif italic text-accent">autoridade,</span>{" "}
               presença e transparência.
             </h1>
-            <p className="lede !text-primary-foreground/75 max-w-xl mb-10">
+            <motion.p
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.9, delay: 0.35 }}
+              className="lede !text-primary-foreground/75 max-w-xl mb-10">
               Sindicatura profissional para condomínios em Osasco, Barueri, Alphaville,
               Santana de Parnaíba e São Paulo. Mais de duas décadas conduzindo condomínios
               com método, técnica e presença real.
-            </p>
-            <div className="flex flex-wrap gap-4 mb-12">
-              <a
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.5 }}
+              className="flex flex-wrap gap-4 mb-12">
+              <motion.a
+                whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}
                 href={waLink()}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -70,14 +86,14 @@ const Index = () => {
               >
                 Falar pelo WhatsApp
                 <ArrowUpRight size={16} />
-              </a>
+              </motion.a>
               <Link
                 to="/contato"
                 className="inline-flex items-center border border-primary-foreground/30 px-7 py-4 text-sm tracking-wide hover:border-accent hover:text-accent transition-colors"
               >
                 Solicitar avaliação do condomínio
               </Link>
-            </div>
+            </motion.div>
 
             <div className="flex flex-wrap gap-x-10 gap-y-4 text-sm text-primary-foreground/70">
               <span className="flex items-center gap-2">
@@ -90,15 +106,20 @@ const Index = () => {
                 <Sparkles size={16} className="text-accent" /> Vanzolini / USP
               </span>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-5 animate-fade-in">
+          <motion.div
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+            className="lg:col-span-5"
+          >
             <div className="relative">
               <div className="absolute -inset-3 border border-accent/40" aria-hidden />
               <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
                 <img
                   src={portrait}
-                  alt="Espaço reservado para retrato profissional de Ricardo Princiotto"
+                  alt="Ricardo Princiotto — síndico profissional"
                   className="h-full w-full object-cover"
                   width={896}
                   height={1216}
@@ -106,16 +127,33 @@ const Index = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-1">
-                    Retrato profissional
+                    Síndico Profissional
                   </p>
                   <p className="font-serif text-xl">Ricardo Princiotto</p>
-                  <p className="text-xs text-primary-foreground/60 mt-2 italic">
-                    [Espaço reservado para foto oficial]
-                  </p>
                 </div>
               </div>
+              <div className="absolute -top-8 -right-8 hidden md:block">
+                <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={140} />
+              </div>
             </div>
-          </div>
+          </motion.div>
+        </div>
+
+        {/* Marquee credenciais sob o hero */}
+        <div className="relative border-t border-primary-foreground/10 py-5">
+          <Marquee
+            items={[
+              "Síndico 5 Estrelas",
+              "Certificação Vanzolini · USP",
+              "20+ anos de experiência",
+              "RC R$ 1.000.000,00",
+              "Sem honorários extras",
+              "Presença real no condomínio",
+              "Transparência integral",
+            ].map((t) => (
+              <span className="font-serif text-xl md:text-2xl text-primary-foreground/70">{t}</span>
+            ))}
+          />
         </div>
       </section>
 
@@ -140,7 +178,7 @@ const Index = () => {
 
       {/* DIFERENCIAIS */}
       <section className="container-prose py-24 md:py-32">
-        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+        <Reveal className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-5">
             <p className="eyebrow mb-6">Por que Ricardo Princiotto</p>
             <h2 className="display text-primary text-balance">
@@ -154,15 +192,17 @@ const Index = () => {
               com a maturidade de quem está há mais de duas décadas no campo.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-          {differentials.slice(0, 4).map((d) => (
-            <div key={d.title} className="bg-background p-8 hover:bg-muted/50 transition-colors">
-              <div className="gold-rule mb-6" />
-              <h3 className="font-serif text-xl text-primary mb-3 leading-snug">{d.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
-            </div>
+          {differentials.slice(0, 4).map((d, i) => (
+            <Reveal key={d.title} delay={i * 0.08}>
+              <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/50 transition-colors h-full">
+                <div className="gold-rule mb-6" />
+                <h3 className="font-serif text-xl text-primary mb-3 leading-snug">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
+              </motion.div>
+            </Reveal>
           ))}
         </div>
 
@@ -178,8 +218,23 @@ const Index = () => {
 
       {/* SERVIÇOS */}
       <section className="bg-primary text-primary-foreground">
+        <div className="border-y border-primary-foreground/10 py-5 bg-navy-deep">
+          <Marquee
+            reverse
+            items={[
+              "Gestão Executiva",
+              "Consultoria Condominial",
+              "Segurança Patrimonial",
+              "Apoio Jurídico",
+              "Modernização & Valorização",
+              "Prestação de Contas Auditável",
+            ].map((t) => (
+              <span className="font-serif italic text-2xl md:text-3xl text-accent/80">{t}</span>
+            ))}
+          />
+        </div>
         <div className="container-prose py-24 md:py-32">
-          <div className="grid lg:grid-cols-12 gap-12 mb-16">
+          <Reveal className="grid lg:grid-cols-12 gap-12 mb-16">
             <div className="lg:col-span-6">
               <p className="eyebrow !text-accent mb-6">Serviços</p>
               <h2 className="display text-balance">
@@ -190,19 +245,21 @@ const Index = () => {
               Da gestão executiva integral à consultoria pontual. Cada serviço é
               entregue com o mesmo padrão técnico, ético e de governança.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary-foreground/10">
-            {services.slice(0, 8).map((s) => {
+            {services.slice(0, 8).map((s, i) => {
               const Icon = s.icon;
               return (
-                <div key={s.slug} className="bg-primary p-8 hover:bg-graphite transition-colors group">
-                  <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
-                  <h3 className="font-serif text-lg mb-3 leading-snug">{s.title}</h3>
-                  <p className="text-sm text-primary-foreground/65 leading-relaxed">
-                    {s.short}
-                  </p>
-                </div>
+                <Reveal key={s.slug} delay={(i % 4) * 0.06}>
+                  <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
+                    <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
+                    <h3 className="font-serif text-lg mb-3 leading-snug">{s.title}</h3>
+                    <p className="text-sm text-primary-foreground/65 leading-relaxed">
+                      {s.short}
+                    </p>
+                  </motion.div>
+                </Reveal>
               );
             })}
           </div>
