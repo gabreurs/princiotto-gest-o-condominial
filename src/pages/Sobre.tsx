@@ -2,6 +2,8 @@ import { Seo } from "@/components/site/Seo";
 import { PageHero } from "@/components/site/PageHero";
 import { CTASection } from "@/components/site/CTASection";
 import portrait from "@/assets/portrait-placeholder.jpg";
+import { SpinningBadge } from "@/components/site/SpinningBadge";
+import { motion } from "framer-motion";
 import { Award, ShieldCheck, GraduationCap, Building } from "lucide-react";
 
 const timeline = [
@@ -29,15 +31,23 @@ const Sobre = () => (
       <div className="lg:col-span-5">
         <div className="relative sticky top-28">
           <div className="absolute -inset-3 border border-accent/40" aria-hidden />
-          <div className="relative aspect-[4/5] overflow-hidden bg-graphite">
-            <img src={portrait} alt="Espaço reservado para retrato profissional de Ricardo Princiotto" className="h-full w-full object-cover" loading="lazy" width={896} height={1216} />
+          <motion.div
+            initial={{ opacity: 0, scale: 1.04 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+            className="relative aspect-[4/5] overflow-hidden bg-graphite"
+          >
+            <img src={portrait} alt="Retrato profissional de Ricardo Princiotto" className="h-full w-full object-cover" loading="lazy" width={896} height={1216} />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-primary-foreground">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-1">Retrato profissional</p>
+              <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-1">Síndico Profissional</p>
               <p className="font-serif text-xl">Ricardo Princiotto</p>
-              <p className="text-xs text-primary-foreground/60 mt-2 italic">[Espaço reservado para foto oficial]</p>
             </div>
-          </div>
+            <div className="absolute -top-6 -right-6 hidden md:block">
+              <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={120} />
+            </div>
+          </motion.div>
         </div>
       </div>
 

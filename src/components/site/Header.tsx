@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { SITE, waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import logoRP from "@/assets/logo-rp.jpeg";
 
 const nav = [
   { to: "/", label: "Início" },
@@ -39,8 +40,8 @@ export const Header = () => {
     >
       <div className="container-prose flex h-20 items-center justify-between">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="grid h-10 w-10 place-items-center bg-primary text-primary-foreground font-serif text-lg leading-none">
-            RP
+          <span className="relative h-11 w-11 overflow-hidden rounded-full ring-1 ring-accent/40 bg-primary">
+            <img src={logoRP} alt="Brasão Ricardo Princiotto" className="h-full w-full object-cover" />
           </span>
           <span className="hidden sm:flex flex-col leading-tight">
             <span className="font-serif text-lg text-primary">{SITE.name}</span>
