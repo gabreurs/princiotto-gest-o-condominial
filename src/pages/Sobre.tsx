@@ -38,14 +38,14 @@ const Sobre = () => (
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
             className="relative aspect-[4/5] overflow-hidden bg-graphite"
           >
-            <img src={portrait} alt="Retrato profissional de Ricardo Princiotto" className="h-full w-full object-cover" loading="lazy" width={896} height={1216} />
+            <img src={portrait} alt="Retrato profissional de Ricardo Princiotto" className="h-full w-full object-cover object-top" loading="lazy" width={896} height={1216} />
             <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-6 text-primary-foreground">
-              <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-1">Síndico Profissional</p>
+              <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-1">Síndico Profissional</p>
               <p className="font-serif text-xl">Ricardo Princiotto</p>
             </div>
-            <div className="absolute -top-6 -right-6 hidden md:block">
-              <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={120} />
+            <div className="absolute top-4 right-4">
+              <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={104} />
             </div>
           </motion.div>
         </div>

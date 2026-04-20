@@ -120,20 +120,20 @@ const Index = () => {
                 <img
                   src={portrait}
                   alt="Ricardo Princiotto — síndico profissional"
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-top"
                   width={896}
                   height={1216}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/80 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-navy-deep/85 via-navy-deep/15 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-[10px] uppercase tracking-[0.22em] text-accent mb-1">
+                  <p className="mono text-[10px] uppercase tracking-[0.22em] text-accent mb-1">
                     Síndico Profissional
                   </p>
                   <p className="font-serif text-xl">Ricardo Princiotto</p>
                 </div>
-              </div>
-              <div className="absolute -top-8 -right-8 hidden md:block">
-                <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={140} />
+                <div className="absolute top-4 right-4">
+                  <SpinningBadge text="Síndico 5 Estrelas · Vanzolini USP · " size={108} />
+                </div>
               </div>
             </div>
           </motion.div>
