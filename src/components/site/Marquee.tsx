@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface Props {
   items: string[];
@@ -9,48 +10,43 @@ interface Props {
 }
 
 /**
- * Marquee discreto, tipo "ticker" tech.
- * Texto fino em mono, opacidade baixa, máscara de fade nas bordas, separadores em ponto.
+ * Marquee tech discreto — uma única faixa fina, tipográfica monoespaçada,
+ * com mask-fade lateral, separadores · e baixa proeminência. Pensado para
+ * funcionar como textura viva do layout.
  */
 export const Marquee = ({
   items,
-  duration = 55,
+  duration = 60,
   reverse = false,
   className = "",
   tone = "light",
 }: Props) => {
   const loop = [...items, ...items, ...items];
-  const colorClass =
-    tone === "dark"
-      ? "text-primary-foreground/40"
-      : "text-muted-foreground/55";
-  const dotClass =
-    tone === "dark" ? "bg-accent/60" : "bg-accent/70";
+  const text = tone === "dark" ? "text-primary-foreground/45" : "text-muted-foreground/55";
+  const dot = tone === "dark" ? "text-primary-foreground/25" : "text-muted-foreground/30";
 
   return (
     <div
-      className={`relative overflow-hidden py-2.5 ${className}`}
+      className={cn("relative overflow-hidden py-2", className)}
       style={{
         maskImage:
-          "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+          "linear-gradient(to right, transparent, black 14%, black 86%, transparent)",
         WebkitMaskImage:
-          "linear-gradient(to right, transparent, black 12%, black 88%, transparent)",
+          "linear-gradient(to right, transparent, black 14%, black 86%, transparent)",
       }}
     >
       <motion.div
-        className="flex items-center gap-10 whitespace-nowrap will-change-transform"
+        className="flex items-center whitespace-nowrap will-change-transform"
         animate={{ x: reverse ? ["-33.333%", "0%"] : ["0%", "-33.333%"] }}
         transition={{ duration, ease: "linear", repeat: Infinity }}
       >
         {loop.map((t, i) => (
-          <div key={i} className="flex items-center gap-10 shrink-0">
-            <span
-              className={`mono text-[11px] uppercase tracking-[0.28em] ${colorClass}`}
-            >
+          <span key={i} className="flex items-center shrink-0">
+            <span className={cn("mono text-[10.5px] uppercase tracking-[0.24em] px-6", text)}>
               {t}
             </span>
-            <span className={`h-1 w-1 rounded-full ${dotClass}`} aria-hidden />
-          </div>
+            <span className={cn("text-xs", dot)}>·</span>
+          </span>
         ))}
       </motion.div>
     </div>
