@@ -178,7 +178,7 @@ const Index = () => {
 
       {/* DIFERENCIAIS */}
       <section className="container-prose py-24 md:py-32">
-        <div className="grid lg:grid-cols-12 gap-12 mb-16">
+        <Reveal className="grid lg:grid-cols-12 gap-12 mb-16">
           <div className="lg:col-span-5">
             <p className="eyebrow mb-6">Por que Ricardo Princiotto</p>
             <h2 className="display text-primary text-balance">
@@ -192,15 +192,17 @@ const Index = () => {
               com a maturidade de quem está há mais de duas décadas no campo.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
-          {differentials.slice(0, 4).map((d) => (
-            <div key={d.title} className="bg-background p-8 hover:bg-muted/50 transition-colors">
-              <div className="gold-rule mb-6" />
-              <h3 className="font-serif text-xl text-primary mb-3 leading-snug">{d.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
-            </div>
+          {differentials.slice(0, 4).map((d, i) => (
+            <Reveal key={d.title} delay={i * 0.08}>
+              <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/50 transition-colors h-full">
+                <div className="gold-rule mb-6" />
+                <h3 className="font-serif text-xl text-primary mb-3 leading-snug">{d.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
+              </motion.div>
+            </Reveal>
           ))}
         </div>
 
@@ -216,8 +218,23 @@ const Index = () => {
 
       {/* SERVIÇOS */}
       <section className="bg-primary text-primary-foreground">
+        <div className="border-y border-primary-foreground/10 py-5 bg-navy-deep">
+          <Marquee
+            reverse
+            items={[
+              "Gestão Executiva",
+              "Consultoria Condominial",
+              "Segurança Patrimonial",
+              "Apoio Jurídico",
+              "Modernização & Valorização",
+              "Prestação de Contas Auditável",
+            ].map((t) => (
+              <span className="font-serif italic text-2xl md:text-3xl text-accent/80">{t}</span>
+            ))}
+          />
+        </div>
         <div className="container-prose py-24 md:py-32">
-          <div className="grid lg:grid-cols-12 gap-12 mb-16">
+          <Reveal className="grid lg:grid-cols-12 gap-12 mb-16">
             <div className="lg:col-span-6">
               <p className="eyebrow !text-accent mb-6">Serviços</p>
               <h2 className="display text-balance">
@@ -228,19 +245,21 @@ const Index = () => {
               Da gestão executiva integral à consultoria pontual. Cada serviço é
               entregue com o mesmo padrão técnico, ético e de governança.
             </p>
-          </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary-foreground/10">
-            {services.slice(0, 8).map((s) => {
+            {services.slice(0, 8).map((s, i) => {
               const Icon = s.icon;
               return (
-                <div key={s.slug} className="bg-primary p-8 hover:bg-graphite transition-colors group">
-                  <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
-                  <h3 className="font-serif text-lg mb-3 leading-snug">{s.title}</h3>
-                  <p className="text-sm text-primary-foreground/65 leading-relaxed">
-                    {s.short}
-                  </p>
-                </div>
+                <Reveal key={s.slug} delay={(i % 4) * 0.06}>
+                  <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
+                    <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
+                    <h3 className="font-serif text-lg mb-3 leading-snug">{s.title}</h3>
+                    <p className="text-sm text-primary-foreground/65 leading-relaxed">
+                      {s.short}
+                    </p>
+                  </motion.div>
+                </Reveal>
               );
             })}
           </div>
