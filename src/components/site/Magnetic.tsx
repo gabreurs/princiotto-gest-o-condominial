@@ -1,4 +1,4 @@
-import { motion, useMotionValue, useSpring, useReducedMotion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useMotionTemplate, useReducedMotion } from "framer-motion";
 import { ReactNode, useRef, MouseEvent } from "react";
 
 interface Props {
@@ -58,6 +58,7 @@ export const SpotlightCard = ({ children, className }: SpotlightProps) => {
   const ref = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(-200);
   const my = useMotionValue(-200);
+  const bg = useMotionTemplate`radial-gradient(220px circle at ${mx}px ${my}px, hsl(var(--accent) / 0.10), transparent 70%)`;
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
@@ -79,11 +80,7 @@ export const SpotlightCard = ({ children, className }: SpotlightProps) => {
       <motion.div
         aria-hidden
         className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background: `radial-gradient(220px circle at var(--mx) var(--my), hsl(var(--accent) / 0.10), transparent 70%)`,
-          ["--mx" as any]: mx,
-          ["--my" as any]: my,
-        }}
+        style={{ background: bg }}
       />
       {children}
     </div>
