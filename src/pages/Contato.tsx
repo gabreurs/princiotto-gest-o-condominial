@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Seo } from "@/components/site/Seo";
 import { PageHero } from "@/components/site/PageHero";
+import { Reveal } from "@/components/site/Reveal";
+import { motion } from "framer-motion";
 import { SITE, waLink } from "@/lib/site";
 import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
@@ -30,7 +32,7 @@ const Contato = () => {
       />
 
       <section className="container-prose py-20 md:py-28 grid lg:grid-cols-12 gap-16">
-        <div className="lg:col-span-5 space-y-10">
+        <Reveal className="lg:col-span-5 space-y-10">
           <div>
             <p className="eyebrow mb-4">Canal preferencial</p>
             <h2 className="font-serif text-3xl text-primary mb-4">WhatsApp</h2>
@@ -73,12 +75,14 @@ const Contato = () => {
               </div>
             </li>
           </ul>
-        </div>
+        </Reveal>
 
-        <form
-          onSubmit={handleSubmit}
-          className="lg:col-span-7 bg-muted/40 p-10 md:p-12 border border-border space-y-6"
-        >
+        <Reveal className="lg:col-span-7" delay={0.1}>
+          <motion.form
+            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}
+            onSubmit={handleSubmit}
+            className="bg-muted/40 p-10 md:p-12 border border-border space-y-6"
+          >
           <div>
             <p className="eyebrow mb-4">Solicitar proposta</p>
             <h2 className="font-serif text-3xl text-primary">Conte sobre o seu condomínio.</h2>
@@ -126,7 +130,8 @@ const Contato = () => {
           <p className="text-[11px] text-muted-foreground text-center">
             Ao enviar, você será direcionado para uma conversa pré-formatada no WhatsApp.
           </p>
-        </form>
+          </motion.form>
+        </Reveal>
       </section>
     </>
   );
