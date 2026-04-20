@@ -409,6 +409,8 @@ const Index = () => {
         </div>
       </section>
 
+      <Testimonials />
+
       <CTASection />
     </>
   );
