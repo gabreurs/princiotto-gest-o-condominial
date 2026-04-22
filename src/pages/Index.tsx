@@ -60,7 +60,7 @@ const Index = () => {
             >
               <span className="grid h-5 w-5 place-items-center rounded-full bg-accent/15 text-accent text-[10px]">★</span>
               <span className="mono text-[10.5px] uppercase tracking-[0.16em] text-muted-foreground">
-                Síndico 5 Estrelas · 20+ anos
+                Bel. em Direito PUC/SP · Síndico 5 Estrelas
               </span>
             </motion.div>
 
@@ -115,7 +115,7 @@ const Index = () => {
                 <ShieldCheck size={14} className="text-accent" /> RC R$ 1.000.000
               </span>
               <span className="flex items-center gap-2">
-                <Sparkles size={14} className="text-accent" /> Vanzolini / USP
+                <Sparkles size={14} className="text-accent" /> Segurança patrimonial e pessoal
               </span>
             </div>
           </motion.div>

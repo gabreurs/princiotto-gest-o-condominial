@@ -4,7 +4,7 @@ import { PageHero } from "@/components/site/PageHero";
 import { Reveal } from "@/components/site/Reveal";
 import { motion } from "framer-motion";
 import { SITE, waLink } from "@/lib/site";
-import { Mail, Phone, MapPin, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Facebook } from "lucide-react";
 import { toast } from "sonner";
 
 const Contato = () => {
@@ -72,6 +72,20 @@ const Contato = () => {
               <div>
                 <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Atendimento</p>
                 <p className="text-primary">Osasco · Barueri · Alphaville · Santana de Parnaíba · São Paulo</p>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <Instagram size={18} className="text-accent shrink-0" />
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Instagram</p>
+                <a href={SITE.socials.instagram} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent">@ricardoprinciotto</a>
+              </div>
+            </li>
+            <li className="flex gap-3">
+              <Facebook size={18} className="text-accent shrink-0" />
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.22em] text-muted-foreground">Facebook</p>
+                <a href={SITE.socials.facebook} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent">Ricardo Princiotto</a>
               </div>
             </li>
           </ul>
