@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { SITE, waLink } from "@/lib/site";
 import { cn } from "@/lib/utils";
-import logoRP from "@/assets/logo-rp.jpeg";
+import logoRP from "@/assets/logo-rp-official.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const nav = [
@@ -55,8 +55,8 @@ export const Header = () => {
 
       <div className="container-prose flex h-[72px] items-center justify-between">
         <Link to="/" className="group flex items-center gap-3">
-          <span className="relative h-9 w-9 overflow-hidden bg-primary">
-            <img src={logoRP} alt="Brasão Ricardo Princiotto" className="h-full w-full object-cover" />
+          <span className="relative h-10 w-9 overflow-hidden bg-background ring-1 ring-border">
+            <img src={logoRP} alt="Logo Ricardo Princiotto" className="h-full w-full object-contain" />
           </span>
           <span className="hidden sm:flex flex-col leading-tight">
             <span className="text-[15px] font-medium text-primary tracking-[-0.01em]">
