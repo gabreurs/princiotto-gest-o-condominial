@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Facebook } from "lucide-react";
 import { SITE, waLink } from "@/lib/site";
-import logoRP from "@/assets/logo-rp.jpeg";
+import logoRP from "@/assets/logo-rp-official.png";
 
 export const Footer = () => {
   return (
@@ -10,8 +10,8 @@ export const Footer = () => {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5 space-y-6">
             <div className="flex items-center gap-3">
-              <span className="relative h-12 w-12 overflow-hidden ring-1 ring-accent/50">
-                <img src={logoRP} alt="Brasão Ricardo Princiotto" className="h-full w-full object-cover" />
+              <span className="relative h-14 w-12 overflow-hidden bg-primary-foreground ring-1 ring-accent/50">
+                <img src={logoRP} alt="Logo Ricardo Princiotto" className="h-full w-full object-contain" />
               </span>
               <div>
                 <p className="font-serif text-xl">{SITE.name}</p>
@@ -25,6 +25,11 @@ export const Footer = () => {
               estratégica em condomínios residenciais e mistos em Osasco, Barueri,
               Alphaville, Santana de Parnaíba e São Paulo.
             </p>
+            <div className="space-y-1 text-xs text-primary-foreground/65">
+              {SITE.credentials.map((credential) => (
+                <p key={credential}>{credential}</p>
+              ))}
+            </div>
             <a
               href={waLink()}
               target="_blank"
@@ -88,6 +93,14 @@ export const Footer = () => {
               <li className="flex items-start gap-2">
                 <MapPin size={14} className="mt-1 text-accent" />
                 <span>Grande São Paulo</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Instagram size={14} className="mt-1 text-accent" />
+                <a href={SITE.socials.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-accent">Instagram</a>
+              </li>
+              <li className="flex items-start gap-2">
+                <Facebook size={14} className="mt-1 text-accent" />
+                <a href={SITE.socials.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-accent">Facebook</a>
               </li>
             </ul>
           </div>

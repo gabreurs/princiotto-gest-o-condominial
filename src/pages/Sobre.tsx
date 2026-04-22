@@ -66,7 +66,7 @@ const Sobre = () => (
           Construí minha carreira em sindicatura ao longo de mais de vinte anos, atuando em condomínios de perfis muito distintos — do edifício residencial de bairro consolidado ao empreendimento de alto padrão em Alphaville. Esse percurso me ensinou que cada condomínio é único, mas todos compartilham a mesma necessidade essencial: <strong className="text-primary font-medium">gestão séria, presença real e clareza nas decisões.</strong>
         </p>
         <p>
-          Sou certificado <strong className="text-primary font-medium">Síndico 5 Estrelas</strong> pela Fundação Vanzolini, instituição ligada à Escola Politécnica da USP — uma das certificações mais reconhecidas no setor por avaliar conhecimento técnico, conduta ética e prática profissional. Mais do que um selo, é um compromisso público com padrão.
+          Sou <strong className="text-primary font-medium">Bel. em Direito pela PUC/SP</strong>, especialista em segurança patrimonial e pessoal, e certificado <strong className="text-primary font-medium">Síndico 5 Estrelas</strong> pela Fundação Vanzolini, instituição ligada à Escola Politécnica da USP. Mais do que formação e selos, é um compromisso público com padrão técnico, conduta ética e prática profissional.
         </p>
         <p>
           Acredito que sindicatura profissional se faz no condomínio, não no escritório. Por isso, a minha rotina inclui visitas frequentes, leitura direta da operação, contato pessoal com equipe e moradores e prestação de contas que qualquer condômino pode acompanhar. Transparência, para mim, é método — não discurso.
@@ -80,9 +80,9 @@ const Sobre = () => (
         <div className="grid sm:grid-cols-2 gap-8">
           {[
             { Icon: Award, title: "Síndico 5 Estrelas", desc: "Certificação Vanzolini / USP" },
-            { Icon: GraduationCap, title: "Formação técnica", desc: "Atualização contínua em gestão condominial" },
+            { Icon: GraduationCap, title: "Bel. em Direito", desc: "Formação pela PUC/SP" },
             { Icon: ShieldCheck, title: "RC R$ 1.000.000", desc: "Cobertura formal de responsabilidade civil" },
-            { Icon: Building, title: "20+ anos", desc: "Experiência prática em condomínios" },
+            { Icon: Building, title: "Segurança patrimonial", desc: "Especialista em segurança patrimonial e pessoal" },
           ].map(({ Icon, title, desc }) => (
             <div key={title} className="border-l-2 border-accent pl-4">
               <Icon size={20} className="text-accent mb-2" strokeWidth={1.4} />
