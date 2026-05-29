@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { WhatsAppFloat } from "./WhatsAppFloat";
+import { ScrollFX } from "./ScrollFX";
 
 export const Layout = () => {
   const { pathname } = useLocation();
@@ -18,6 +19,7 @@ export const Layout = () => {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <ScrollFX />
     </div>
   );
 };
