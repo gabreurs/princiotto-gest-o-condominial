@@ -5,10 +5,12 @@ interface Props {
   title: string;
   lede?: string;
   breadcrumb?: { label: string; to?: string }[];
+  image?: string;
+  imageAlt?: string;
 }
 import { Link } from "react-router-dom";
 
-export const PageHero = ({ eyebrow, title, lede, breadcrumb }: Props) => (
+export const PageHero = ({ eyebrow, title, lede, breadcrumb, image, imageAlt }: Props) => (
   <section className="relative overflow-hidden border-b border-border bg-background">
     <div className="absolute inset-0 grid-bg opacity-25 [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]" aria-hidden />
     <div className="container-prose relative pt-32 pb-16 md:pt-36 md:pb-20">
@@ -58,5 +60,19 @@ export const PageHero = ({ eyebrow, title, lede, breadcrumb }: Props) => (
         </motion.p>
       )}
     </div>
+    {image && (
+      <div className="relative w-full h-[42vh] min-h-[260px] md:h-[52vh] md:min-h-[360px] overflow-hidden bg-muted">
+        <img
+          src={image}
+          alt={imageAlt ?? title}
+          data-fx="parallax-strong"
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
+          loading="eager"
+          width={1600}
+          height={1000}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background" />
+      </div>
+    )}
   </section>
 );
