@@ -12,6 +12,11 @@ import { SITE, waLink } from "@/lib/site";
 import { services, differentials, faqs } from "@/data/services";
 import heroBg from "@/assets/hero-bg.jpg";
 import portrait from "@/assets/portrait-placeholder.jpg";
+import condoTower from "@/assets/condo-tower.jpg";
+import lobbyImg from "@/assets/lobby.jpg";
+import meetingImg from "@/assets/meeting.jpg";
+import securityImg from "@/assets/security.jpg";
+import aerialImg from "@/assets/aerial.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -178,7 +183,7 @@ const Index = () => {
 
       {/* CREDIBILIDADE */}
       <section className="border-y border-border bg-muted/40">
-        <div className="container-prose py-12 grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+        <div className="container-prose py-12 grid grid-cols-2 md:grid-cols-4 gap-10 text-center" data-fx="stagger">
           {[
             ["20+", "Anos de experiência"],
             ["5★", "Síndico Certificado"],
@@ -186,7 +191,7 @@ const Index = () => {
             ["100%", "Transparência em prestação de contas"],
           ].map(([k, v], i) => (
             <Reveal key={k} delay={i * 0.08}>
-              <div>
+              <div data-fx="hover-lift">
                 <p className="font-serif text-3xl md:text-4xl text-primary">{k}</p>
                 <p className="mono text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">
                   {v}
@@ -194,6 +199,54 @@ const Index = () => {
               </div>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* GALERIA / GRID DE IMAGENS — método e atuação */}
+      <section className="container-prose pt-24 md:pt-32">
+        <div className="grid lg:grid-cols-12 gap-6 mb-12">
+          <div className="lg:col-span-5" data-fx="reveal">
+            <p className="eyebrow mb-6">Atuação real</p>
+            <h2 className="display text-primary text-balance">
+              Presença no condomínio, leitura direta da operação.
+            </h2>
+          </div>
+          <p className="lg:col-span-6 lg:col-start-7 lede" data-fx="reveal">
+            Cada decisão de gestão nasce no campo: visitas, contato com equipes, leitura
+            dos contratos e dos números. É assim que se constrói uma sindicatura
+            confiável e bem documentada.
+          </p>
+        </div>
+        <div className="grid grid-cols-12 grid-rows-2 gap-3 md:gap-4 h-[420px] md:h-[560px]" data-fx="stagger">
+          <div data-fx="hover-lift" className="col-span-7 row-span-2 relative overflow-hidden rounded-[6px] bg-muted">
+            <img src={condoTower} alt="Torre residencial" data-fx="parallax" className="absolute inset-0 w-full h-full object-cover will-change-transform" loading="lazy" width={1600} height={1000} />
+          </div>
+          <div data-fx="hover-lift" className="col-span-5 relative overflow-hidden rounded-[6px] bg-muted">
+            <img src={lobbyImg} alt="Lobby condominial" data-fx="parallax" className="absolute inset-0 w-full h-full object-cover will-change-transform" loading="lazy" width={1600} height={1000} />
+          </div>
+          <div data-fx="hover-lift" className="col-span-5 relative overflow-hidden rounded-[6px] bg-muted">
+            <img src={meetingImg} alt="Reunião condominial" data-fx="parallax" className="absolute inset-0 w-full h-full object-cover will-change-transform" loading="lazy" width={1600} height={1000} />
+          </div>
+        </div>
+      </section>
+
+      {/* BANNER PARALAXE — segurança e governança */}
+      <section className="relative mt-24 md:mt-32 h-[52vh] min-h-[360px] overflow-hidden">
+        <img
+          src={securityImg}
+          alt="Segurança e governança condominial"
+          data-fx="parallax-strong"
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
+          loading="lazy"
+          width={1600}
+          height={1000}
+        />
+        <div className="absolute inset-0 bg-navy-deep/70" />
+        <div className="container-prose relative h-full flex flex-col justify-end pb-14">
+          <p data-fx="reveal" className="eyebrow !text-accent mb-4">Segurança patrimonial e pessoal</p>
+          <h2 data-fx="reveal" className="font-serif text-3xl md:text-5xl text-primary-foreground max-w-3xl text-balance">
+            Governança, controle de acessos e responsabilidade — o padrão de quem entende de segurança.
+          </h2>
         </div>
       </section>
 
@@ -215,11 +268,11 @@ const Index = () => {
           </div>
         </Reveal>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border" data-fx="stagger">
           {differentials.slice(0, 4).map((d, i) => (
             <Reveal key={d.title} delay={i * 0.08}>
               <SpotlightCard className="h-full">
-                <motion.div whileHover={{ y: -4 }} className="bg-background p-8 hover:bg-muted/40 transition-colors h-full">
+                <motion.div whileHover={{ y: -4 }} data-fx="hover-lift" className="bg-background p-8 hover:bg-muted/40 transition-colors h-full">
                   <div className="gold-rule mb-6" />
                   <h3 className="text-[17px] font-medium text-primary mb-3 leading-snug tracking-[-0.01em]">{d.title}</h3>
                   <p className="text-sm text-muted-foreground leading-relaxed">{d.description}</p>
@@ -269,13 +322,13 @@ const Index = () => {
             </p>
           </Reveal>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary-foreground/10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-primary-foreground/10" data-fx="stagger">
             {services.slice(0, 8).map((s, i) => {
               const Icon = s.icon;
               return (
                 <Reveal key={s.slug} delay={(i % 4) * 0.06}>
                   <SpotlightCard className="h-full">
-                    <motion.div whileHover={{ y: -4 }} className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
+                    <motion.div whileHover={{ y: -4 }} data-fx="hover-lift" className="bg-primary p-8 hover:bg-graphite transition-colors group h-full">
                       <Icon className="text-accent mb-6" size={26} strokeWidth={1.4} />
                       <h3 className="text-[16px] font-medium mb-3 leading-snug tracking-[-0.01em]">{s.title}</h3>
                       <p className="text-sm text-primary-foreground/70 leading-relaxed">
@@ -320,14 +373,14 @@ const Index = () => {
             </Link>
           </Reveal>
           <Reveal delay={0.12} className="lg:col-span-6 lg:col-start-7">
-          <div className="grid grid-cols-2 gap-px bg-border">
+          <div className="grid grid-cols-2 gap-px bg-border" data-fx="stagger">
             {[
               ["−68%", "Redução de inadimplência"],
               ["+3,2x", "Crescimento do fundo de obras"],
               ["12 meses", "Para estabilização financeira"],
               ["100%", "Prestação de contas auditável"],
             ].map(([k, v]) => (
-              <motion.div key={k} whileHover={{ y: -3 }} className="bg-background p-8">
+              <motion.div key={k} whileHover={{ y: -3 }} data-fx="hover-lift" className="bg-background p-8">
                 <p className="font-serif text-3xl text-primary">{k}</p>
                 <p className="mono text-xs uppercase tracking-[0.18em] text-muted-foreground mt-2">
                   {v}
