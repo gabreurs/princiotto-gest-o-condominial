@@ -5,6 +5,8 @@ import portrait from "@/assets/portrait-placeholder.jpg";
 import { SpinningBadge } from "@/components/site/SpinningBadge";
 import { motion } from "framer-motion";
 import { Award, ShieldCheck, GraduationCap, Building } from "lucide-react";
+import lobbyImg from "@/assets/lobby.jpg";
+import meetingImg from "@/assets/meeting.jpg";
 
 const timeline = [
   { year: "2003", title: "Início na sindicatura", desc: "Primeiras gestões em condomínios residenciais da Grande São Paulo." },
@@ -25,6 +27,8 @@ const Sobre = () => (
       title="Mais de duas décadas conduzindo condomínios com técnica, ética e presença."
       lede="A sindicatura profissional não é cargo, é função. E exige preparo, dedicação integral e uma postura coerente entre o que se diz e o que se faz."
       breadcrumb={[{ label: "Início", to: "/" }, { label: "Sobre" }]}
+      image={lobbyImg}
+      imageAlt="Lobby de condomínio de alto padrão"
     />
 
     <section className="container-prose py-20 md:py-28 grid lg:grid-cols-12 gap-16">
@@ -77,7 +81,7 @@ const Sobre = () => (
 
         <div className="hairline my-12" />
 
-        <div className="grid sm:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-8" data-fx="stagger">
           {[
             { Icon: Award, title: "Síndico 5 Estrelas", desc: "Certificação Vanzolini / USP" },
             { Icon: GraduationCap, title: "Bel. em Direito", desc: "Formação pela PUC/SP" },
@@ -94,6 +98,25 @@ const Sobre = () => (
       </div>
     </section>
 
+    {/* Imagem de método */}
+    <section className="relative h-[46vh] min-h-[320px] overflow-hidden">
+      <img
+        src={meetingImg}
+        alt="Reunião condominial com análise de relatórios financeiros"
+        data-fx="parallax-strong"
+        className="absolute inset-0 w-full h-full object-cover will-change-transform"
+        loading="lazy"
+        width={1600}
+        height={1000}
+      />
+      <div className="absolute inset-0 bg-navy-deep/55" />
+      <div className="container-prose relative h-full flex items-end pb-12">
+        <p data-fx="reveal" className="font-serif text-2xl md:text-4xl text-primary-foreground max-w-2xl text-balance">
+          “Sindicatura é função: exige preparo, presença e coerência entre o que se diz e o que se faz.”
+        </p>
+      </div>
+    </section>
+
     {/* Linha do tempo */}
     <section className="bg-muted/40 border-y border-border">
       <div className="container-prose py-24">
@@ -101,9 +124,9 @@ const Sobre = () => (
           <p className="eyebrow justify-center mb-6">Linha do tempo</p>
           <h2 className="display text-primary text-balance">Marcos de uma carreira em sindicatura.</h2>
         </div>
-        <div className="grid md:grid-cols-4 gap-px bg-border">
+        <div className="grid md:grid-cols-4 gap-px bg-border" data-fx="stagger">
           {timeline.map((t) => (
-            <div key={t.year} className="bg-background p-8">
+            <div key={t.year} data-fx="hover-lift" className="bg-background p-8">
               <p className="font-serif text-3xl text-accent">{t.year}</p>
               <div className="gold-rule my-4" />
               <p className="font-serif text-lg text-primary mb-2">{t.title}</p>

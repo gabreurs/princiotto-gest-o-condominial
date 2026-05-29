@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { motion } from "framer-motion";
 import regionsImg from "@/assets/regions.jpg";
+import aerialImg from "@/assets/aerial.jpg";
 import { ArrowUpRight } from "lucide-react";
 
 const regions = [
@@ -28,6 +29,8 @@ const Regioes = () => (
       title="Atendimento direcionado, presença real."
       lede="Trabalho com cobertura geográfica intencionalmente focada para garantir presença, agilidade e qualidade de gestão em cada condomínio atendido."
       breadcrumb={[{ label: "Início", to: "/" }, { label: "Regiões" }]}
+      image={aerialImg}
+      imageAlt="Vista aérea de condomínios de Alphaville ao entardecer"
     />
 
     <Marquee items={["Osasco", "Barueri", "Alphaville", "Santana de Parnaíba", "São Paulo", "Zona Norte SP"]} />

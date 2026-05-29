@@ -4,6 +4,9 @@ import { CTASection } from "@/components/site/CTASection";
 import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { motion } from "framer-motion";
+import meetingImg from "@/assets/meeting.jpg";
+import condoTower from "@/assets/condo-tower.jpg";
+import lobbyImg from "@/assets/lobby.jpg";
 
 const Cases = () => (
   <>
@@ -17,11 +20,28 @@ const Cases = () => (
       title="Gestão profissional, traduzida em resultados sustentáveis."
       lede="Os números a seguir representam a ordem de grandeza típica de cases conduzidos. Servem para ilustrar o impacto real de uma gestão profissional bem aplicada."
       breadcrumb={[{ label: "Início", to: "/" }, { label: "Cases" }]}
+      image={condoTower}
+      imageAlt="Condomínio recuperado financeiramente"
     />
 
     <Marquee items={["Recuperação financeira", "Fundo de obras", "Inadimplência -68%", "Plano plurianual", "Manutenção preventiva", "Prestação de contas auditável"]} />
 
     <section className="container-prose py-20 md:py-28">
+      <div className="grid md:grid-cols-3 gap-px bg-border mb-20" data-fx="stagger">
+        {[meetingImg, condoTower, lobbyImg].map((img, i) => (
+          <div key={i} data-fx="hover-lift" className="relative aspect-[4/3] overflow-hidden bg-muted">
+            <img
+              src={img}
+              alt="Gestão condominial profissional"
+              data-fx="parallax"
+              className="absolute inset-0 w-full h-full object-cover will-change-transform"
+              loading="lazy"
+              width={1600}
+              height={1000}
+            />
+          </div>
+        ))}
+      </div>
       <article className="grid lg:grid-cols-12 gap-12">
         <Reveal className="lg:col-span-5">
           <p className="eyebrow mb-6">Case em destaque</p>
