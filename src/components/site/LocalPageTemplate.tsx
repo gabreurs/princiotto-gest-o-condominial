@@ -7,6 +7,8 @@ import { motion } from "framer-motion";
 import { waLink, SITE } from "@/lib/site";
 import { differentials } from "@/data/services";
 import { Check, ArrowUpRight } from "lucide-react";
+import condoTower from "@/assets/condo-tower.jpg";
+import meetingImg from "@/assets/meeting.jpg";
 import {
   Accordion,
   AccordionContent,
@@ -65,6 +67,8 @@ export const LocalPageTemplate = ({ data }: { data: LocalPageData }) => {
           { label: "Regiões", to: "/regioes" },
           { label: data.city },
         ]}
+        image={condoTower}
+        imageAlt={`Condomínio em ${data.city}`}
       />
 
       <Marquee items={[`Síndico Profissional · ${data.city}`, "Vanzolini · USP", "20+ anos", "RC R$ 1.000.000", "Sem honorários extras", "Presença real"]} />
@@ -121,6 +125,25 @@ export const LocalPageTemplate = ({ data }: { data: LocalPageData }) => {
               ))}
             </ul>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Banner paralaxe */}
+      <section className="relative h-[40vh] min-h-[280px] overflow-hidden">
+        <img
+          src={meetingImg}
+          alt={`Gestão condominial em ${data.city}`}
+          data-fx="parallax-strong"
+          className="absolute inset-0 w-full h-full object-cover will-change-transform"
+          loading="lazy"
+          width={1600}
+          height={1000}
+        />
+        <div className="absolute inset-0 bg-navy-deep/60" />
+        <div className="container-prose relative h-full flex items-end pb-10">
+          <p data-fx="reveal" className="font-serif text-2xl md:text-4xl text-primary-foreground max-w-2xl text-balance">
+            Presença real, método e responsabilidade — também em {data.city}.
+          </p>
         </div>
       </section>
 

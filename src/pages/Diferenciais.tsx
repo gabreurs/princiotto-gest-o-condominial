@@ -5,6 +5,10 @@ import { Reveal } from "@/components/site/Reveal";
 import { Marquee } from "@/components/site/Marquee";
 import { motion } from "framer-motion";
 import { differentials } from "@/data/services";
+import securityImg from "@/assets/security.jpg";
+import lobbyImg from "@/assets/lobby.jpg";
+import meetingImg from "@/assets/meeting.jpg";
+import aerialImg from "@/assets/aerial.jpg";
 
 const Diferenciais = () => (
   <>
@@ -18,12 +22,33 @@ const Diferenciais = () => (
       title="O que distingue uma sindicatura profissional de excelência."
       lede="Diferenciais reais não cabem em bullets soltos. Cada um deles é uma escolha de método, postura e responsabilidade — e é assim que devem ser entendidos."
       breadcrumb={[{ label: "Início", to: "/" }, { label: "Diferenciais" }]}
+      image={securityImg}
+      imageAlt="Entrada segura de condomínio de alto padrão"
     />
 
     <Marquee items={["Método", "Presença real", "Transparência integral", "Vanzolini · USP", "RC R$ 1.000.000", "Sem honorários extras"]} />
 
+    {/* Galeria visual */}
+    <section className="container-prose pt-16">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border" data-fx="stagger">
+        {[lobbyImg, meetingImg, securityImg, aerialImg].map((img, i) => (
+          <div key={i} data-fx="hover-lift" className="relative aspect-square overflow-hidden bg-muted">
+            <img
+              src={img}
+              alt="Gestão condominial"
+              data-fx="parallax"
+              className="absolute inset-0 w-full h-full object-cover will-change-transform"
+              loading="lazy"
+              width={1200}
+              height={1200}
+            />
+          </div>
+        ))}
+      </div>
+    </section>
+
     <section className="container-prose py-20 md:py-28">
-      <div className="grid md:grid-cols-2 gap-12 md:gap-16">
+      <div className="grid md:grid-cols-2 gap-12 md:gap-16" data-fx="stagger">
         {differentials.map((d, i) => (
           <Reveal key={d.title} delay={(i % 2) * 0.1}>
             <motion.article whileHover={{ y: -3 }} className="group">

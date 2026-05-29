@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { SITE, waLink } from "@/lib/site";
 import { Mail, Phone, MapPin, ArrowUpRight, Instagram, Facebook } from "lucide-react";
 import { toast } from "sonner";
+import lobbyImg from "@/assets/lobby.jpg";
 
 const Contato = () => {
   const [form, setForm] = useState({ nome: "", condominio: "", regiao: "", mensagem: "" });
@@ -29,6 +30,8 @@ const Contato = () => {
         title="Vamos conversar sobre o seu condomínio."
         lede="WhatsApp é o canal mais rápido. O formulário abaixo redireciona diretamente para uma conversa estruturada."
         breadcrumb={[{ label: "Início", to: "/" }, { label: "Contato" }]}
+        image={lobbyImg}
+        imageAlt="Lobby elegante de condomínio"
       />
 
       <section className="container-prose py-20 md:py-28 grid lg:grid-cols-12 gap-16">
